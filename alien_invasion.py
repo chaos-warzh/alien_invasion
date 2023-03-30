@@ -11,12 +11,11 @@ class AlienInvasion:
     def __init__(self):
         """initialize game and create game resources"""
         pygame.init()
+        self.settings = Settings()
 
-        self.screen = pygame.display.set_mode((1200, 800))
+        self.screen = pygame.display.set_mode(
+            (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien Invasion")
-
-        # set background color
-        self.bg_color = (230, 230, 230)
 
     def run_game(self):
         """begin the main loop"""
@@ -27,7 +26,7 @@ class AlienInvasion:
                     sys.exit()
 
             # refill the screen in every cycle
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
             # let the most recent drawn screen visible
             pygame.display.flip()
 
@@ -36,4 +35,3 @@ if __name__ == "__main__":
     # create an instance of game and run game
     ai = AlienInvasion()
     ai.run_game()
-
